@@ -1,5 +1,3 @@
-require "sinatra"
-require "sinatra/base"
 require_relative "../lib/hsds_transformer"
 
 class Api < Sinatra::Base
@@ -7,10 +5,6 @@ class Api < Sinatra::Base
 
   before do
     content_type 'multipart/form-data'
-  end
-
-  get "/transform" do
-    "Submit your data uri"
   end
 
   # TODO catch the Exceptions and return error reponses
@@ -39,14 +33,3 @@ class Api < Sinatra::Base
     send_file transformer.zipfile_name
   end
 end
-
-
-#require "net/http"
-
-# uri = URI.parse("http://localhost:4567")
-
-# http = Net::HTTP.new(uri.host, uri.port)
-# request = Net::HTTP::Post.new("/v1.1/auth")
-# request.add_field('Content-Type', 'application/json')
-# request.body = {'credentials' => ''}
-#response = http.request(request)
